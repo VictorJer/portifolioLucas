@@ -1,0 +1,135 @@
+// 1. Cores da Brand
+$ph-orange: #ff9900; // Laranja característico da marca
+$ph-orange-hover: #e68a00; // Laranja escuro para hover
+$ph-orange-light: #ffb74d; // Laranja suave/pastel para avisos/badges
+
+$ph-black: #0a0a0a; // Preto quase puro para o fundo principal
+$ph-dark-card: #1b1b1b; // Grafite escuro para cards e containers
+$ph-dark-surface: #282828; // Elementos secundários, inputs e bordas
+
+$ph-white: #ffffff; // Texto principal
+$ph-gray-text: #a1a1a1; // Texto secundário e legendas
+
+// 2. Cores Funcionais Adaptadas
+$ph-danger: #ffffff; // Vermelho para erros/ações destrutivas
+$ph-success: #2ecc71; // Verde para confirmações
+// fontes
+$fonte-padrao: 'Inter', sans-serif;
+
+@use 'bootstrap/scss/bootstrap' with (
+  $primary: #5b21b6,
+  $secondary: $ph-dark-surface,
+  $success: $ph-success,
+  $danger: $ph-danger,
+  $warning: #5b21b6,
+
+  $dark: $ph-black,
+  $light: $ph-dark-card,
+
+  $body-bg: $ph-black,
+  $body-color: $ph-white,
+
+  $link-color: #5b21b6,
+  $link-hover-color: #5b21b6,
+  $font-family-base: $fonte-padrao,
+  $font-family-sans-serif: $fonte-padrao
+);
+
+@use 'bootstrap-icons';
+
+// body {
+//   background: linear-gradient(180deg, #0a0a0a 85%, #1a0b2e 93%, #5b21b6 98%);
+//   background-attachment: fixed;
+//   min-height: 100%;
+//   background-repeat: no-repeat;
+// }
+
+section {
+  display: flex;
+  min-height: 100vh;
+}
+
+.ph-logo-badge {
+  background-color: var(--ph-orange);
+  color: #000000;
+  padding: 0.15rem 0.5rem;
+  border-radius: 22px;
+  margin-left: 3px;
+  font-weight: 800;
+  display: inline-block;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.ph-logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 1.5rem;
+  letter-spacing: -0.5px;
+  color: var(--ph-white);
+  user-select: none;
+}
+
+.ph-navbar {
+  background-color: var(--ph-dark-card);
+  border-bottom: 2px solid var(--ph-dark-surface);
+  padding: 0.75rem 1.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+// Cores do Gradiente
+$ph-orange-bright: #ff9900;
+$ph-orange-deep: #cc5200;
+$ph-purple-glow: #5b21b6; // Um toque subtil de roxo no fundo para criar profundidade
+
+.bg-gradient-amber {
+  background: linear-gradient(
+    135deg,
+    $ph-orange-bright 0%,
+    $ph-orange-deep 70%,
+    $ph-purple-glow 100%
+  );
+}
+
+.bg-gradient-amberD {
+  background: linear-gradient(135deg, #ff99009a 0%, #cc5200 70%);
+}
+
+.btn-amber-glow {
+  background: linear-gradient(135deg, #ff9900 0%, #e65100 100%);
+  color: #0a0a0a;
+  font-weight: bold;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+// Definição das cores opacas
+$ph-black: #000000;
+$ph-dark-surface: #352f2f;
+$ph-orange-faded: #ff9900; // Laranja queimado, quase marrom/cinza
+
+.bg-gradient-sombrio {
+  background: #5a21b69a 90%;
+  border-radius: 33% 67% 53% 47% / 66% 41% 59% 34%;
+  height: 31rem;
+  width: 25rem;
+}
+
+.bg-gradient-top-to-bottom-smooth {
+  background: linear-gradient(180deg, #000000 35%, #1a0b2e 47%, #5b21b6 74%);
+  // background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+  // padding: 0 10%;
+}
+
+.bg-gradient-amberV {
+  background: #5b21b6;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&family=Plus+Jakarta+Sans:wght@700;800&display=swap');

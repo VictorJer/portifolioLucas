@@ -1,0 +1,63 @@
+<section id="projetos" class="text-danger align-items-center">
+  <article class="container d-flex flex-column my-5">
+    <h2 class="text-center">Projetos</h2>
+
+    <p class="text-center">Aqui, você pode visualizar os projetos em que trabalhei.</p>
+
+    <ol>
+      @for (projeto of projetos; track projeto.titulo; let indice = $index) {
+        <li class="d-flex align-items-start gap-4 border-bottom border-dark-sutlr py-4">
+          <span class="fs-1 fw-medium fst-italic" aria-hidden="true">{{
+            (indice + 1).toString().padStart(2, '0')
+          }}</span>
+          <article class="d-flex flex-column gap-3 flex-grow-1 pt-3">
+            <h3 class="fs-2 fw-medium fst-italic text-primary text-danger">{{ projeto.titulo }}</h3>
+            <p class="fs-5 text-danger mb-0">{{ projeto.descricao }}</p>
+
+            <div class="d-flex flex-column gap-2 mt-3">
+              <div class="d-flex flex-wrap gap-2" aria-label="Tecnologias utilizadas">
+                @for (tecnologia of projeto.tecnologias; track tecnologia) {
+                  <span
+                    class="badge rounded-pill border border-light-subtle text-danger px-3 py-2"
+                    >{{ tecnologia }}</span
+                  >
+                }
+              </div>
+              <div class="d-flex flex-wrap gap-3 ms-auto">
+                @if (projeto.urlImagem) {
+                  <button
+                    (click)="selecionadoProjeto(projeto)"
+                    ;
+                    type="button"
+                    data-bs-toggle="modal"
+                    data-bs-target="#projetoModal"
+                    class="btn btn-outline-danger rounded-pill"
+                  >
+                    <i class="bi bi-image"></i>
+                    Ver Imagem
+                  </button>
+                }
+
+                <a
+                  [href]="projeto.urlRepositorio"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn btn-outline-danger rounded-pill"
+                >
+                  <i class="bi bi-github"></i>
+                  Repositorio</a
+                >
+              </div>
+            </div>
+          </article>
+        </li>
+      }
+    </ol>
+  </article>
+</section>
+
+<app-modal-projeto
+  [projeto]="projetoSelecionado()"
+  (modalFechado)="projetoSelecionado.set(undefined)"
+>
+</app-modal-projeto>

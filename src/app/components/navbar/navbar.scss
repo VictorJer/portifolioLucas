@@ -1,0 +1,33 @@
+.mp-navbar {
+  background: #080808;
+  border-bottom: 1px solid rgba(217, 181, 63, 0.35);
+}
+
+.mp-brand {
+  color: #f5f1e8;
+  font: 1.15rem Georgia, serif;
+  letter-spacing: 0.04em;
+}
+
+.mp-brand img {
+  width: 43px;
+  height: 50px;
+  object-fit: contain;
+  margin-right: 0.6rem;
+}
+
+.mp-navbar .nav-link {
+  color: #dedbd2;
+}
+
+.mp-navbar .nav-link:hover,
+.mp-navbar .nav-link.active {
+  color: #d9b53f;
+}
+
+.mp-cta {
+  color: #17120a;
+  background: #d9b53f;
+  border-color: #d9b53f;
+  font-weight: 700;
+}
