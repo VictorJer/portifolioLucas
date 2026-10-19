@@ -112,12 +112,12 @@ $ph-black: #000000;
 $ph-dark-surface: #352f2f;
 $ph-orange-faded: #ff9900; // Laranja queimado, quase marrom/cinza
 
-.bg-gradient-sombrio {
-  background: #5a21b69a 90%;
-  border-radius: 33% 67% 53% 47% / 66% 41% 59% 34%;
-  height: 31rem;
-  width: 25rem;
-}
+// .bg-gradient-sombrio {
+//   background: #5a21b69a 90%;
+//   border-radius: 33% 67% 53% 47% / 66% 41% 59% 34%;
+//   height: 31rem;
+//   width: 25rem;
+// }
 
 .bg-gradient-top-to-bottom-smooth {
   background: linear-gradient(180deg, #000000 35%, #1a0b2e 47%, #5b21b6 74%);
