@@ -41,7 +41,9 @@ h1 span {
   aspect-ratio: 4 / 5;
   border: 1px solid var(--accent-border);
   overflow: hidden;
-  background: radial-gradient(ellipse at 65% 40%, #5d4316 0, #2b200f 30%, #17120c 55%, #0c0b09 80%);
+  background:
+    radial-gradient(ellipse at 15% 35%, #14523299, transparent 60%),
+    radial-gradient(ellipse at 95% 55%, #6d1a2a80, transparent 60%), #0d1210;
 }
 .athlete-photo {
   position: absolute;
@@ -85,8 +87,8 @@ h1 span {
   bottom: 0;
   right: 0;
   padding: 18px 24px;
-  border-left: 3px solid var(--accent);
-  background: #241e13;
+  border-left: 3px solid var(--secondary);
+  background: #14231b;
   font-size: 0.65rem;
   line-height: 1.7;
   letter-spacing: 0.08em;
@@ -105,9 +107,11 @@ h1 span {
   letter-spacing: 0.15em;
 }
 .hero-ribbon {
-  background: var(--accent);
-  color: #0a0a0a;
+  background: #101713;
+  color: var(--text);
   padding: 18px 0;
+  border-block: 3px solid;
+  border-image: var(--tricolor) 1;
 }
 .hero-ribbon > div {
   display: flex;

@@ -2,7 +2,7 @@
 
 Landing page Angular com TypeScript e SCSS, orientada pelo [SPEC.md](SPEC.md) e pelas responsabilidades do [AGENTS.md](AGENTS.md).
 
-A pedido do usuário, a paleta segue o PDF “MÉTODO 360 (1).pdf”: dourado `#D9AC39` amostrado da capa, fundo preto quente `#080706` e texto branco `#FFFFFF`, com superfícies em tons de bronze. Esta orientação substitui a paleta verde neon originalmente descrita no SPEC e no AGENTS; preços e condições permanecem os do SPEC. As cores estão centralizadas em `src/styles.scss`.
+A paleta segue a orientação mais recente do usuário de usar verde, vermelho e branco da logo: verde `#18B86A` nos CTAs e destaques, vermelho `#D9334B` em selos e bordas, vermelho `#E84355` em textos e branco `#FFFFFF`, sobre fundo escuro `#080A09`. Os tons da interface foram adaptados para legibilidade. Esta orientação substitui o dourado anteriormente inspirado no PDF e o verde neon do SPEC; preços e condições permanecem os do SPEC. As cores estão centralizadas em `src/styles.scss`.
 
 ## Desenvolvimento
 

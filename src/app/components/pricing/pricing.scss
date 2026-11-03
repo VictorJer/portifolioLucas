@@ -51,9 +51,9 @@
   position: relative;
 }
 .plan-card.featured {
-  border: 2px solid var(--accent);
-  background: linear-gradient(150deg, #302411, #17130e 65%);
-  box-shadow: 0 0 28px var(--accent-glow);
+  border: 2px solid var(--secondary);
+  background: linear-gradient(150deg, #32151c, #141916 65%);
+  box-shadow: 0 0 28px #d9334b18;
 }
 .plan-label {
   min-height: 32px;
@@ -62,8 +62,8 @@
   color: var(--muted);
 }
 .featured-badge {
-  background: var(--accent);
-  color: #0a0a0a;
+  background: var(--secondary);
+  color: var(--text);
   font-weight: 800;
   padding: 7px 9px;
   letter-spacing: 0.03em;

@@ -1,10 +1,11 @@
 @use 'bootstrap/scss/bootstrap-reboot';
-// Dourado amostrado da capa do PDF Método Evolução 360.
-$brand-gold: #d9ac39;
-$bg-dark: #080706;
-$surface: #171410;
+// Paleta da logo: verde, vermelho e branco, adaptada para contraste na interface.
+$brand-green: #18b86a;
+$brand-red: #d9334b;
+$bg-dark: #080a09;
+$surface: #131715;
 $text: #ffffff;
-$muted: #bfb9ad;
+$muted: #b9c3be;
 @font-face {
   font-family: 'Teko';
   src: url('../public/fonts/Teko.woff2') format('woff2');
@@ -20,17 +21,19 @@ $muted: #bfb9ad;
   font-display: swap;
 }
 :root {
-  --accent: #{$brand-gold};
+  --accent: #{$brand-green};
+  --secondary: #{$brand-red};
+  --secondary-text: #e84355;
   --bg: #{$bg-dark};
   --surface: #{$surface};
   --text: #{$text};
   --muted: #{$muted};
-  --border: #3a3222;
-  --accent-hover: #edc768;
-  --accent-soft: #211a0e;
-  --accent-border: #665022;
-  --accent-glow: #{rgba($brand-gold, 0.12)};
-  --art-highlight: #f4e8ca;
+  --border: #2e3b34;
+  --accent-hover: #55d996;
+  --accent-soft: #101f17;
+  --accent-border: #28553d;
+  --accent-glow: #{rgba($brand-green, 0.12)};
+  --tricolor: linear-gradient(90deg, #14944f 0% 33.33%, #ffffff 33.33% 66.66%, #d9334b 66.66% 100%);
   --heading-font: 'Teko', 'Arial Narrow', sans-serif;
 }
 * {
@@ -42,7 +45,7 @@ html {
 }
 body {
   margin: 0;
-  background: radial-gradient(ellipse at 100% 0%, #d9ac390a, transparent 35%), var(--bg);
+  background: radial-gradient(ellipse at 100% 0%, #18b86a0a, transparent 35%), var(--bg);
   color: var(--text);
   font-family: 'Inter', Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -147,13 +150,13 @@ h3 {
   border-color: #4a4a4a;
 }
 .button-unavailable {
-  background: #29241b;
+  background: #202923;
   color: var(--muted);
-  border-color: #55482f;
+  border-color: #3d5548;
   cursor: not-allowed;
 }
 .button-unavailable:hover {
-  background: #29241b;
+  background: #202923;
   color: var(--muted);
 }
 .text-link {
@@ -239,7 +242,7 @@ h3 {
   align-items: center;
 }
 .bio-statement {
-  background: linear-gradient(140deg, #211b10, #11100d 65%);
+  background: linear-gradient(140deg, #10271c, #0e1411 65%);
   border: 1px solid var(--border);
   min-height: 500px;
   padding: 36px;
@@ -291,7 +294,7 @@ blockquote {
   line-height: 1.8;
 }
 .method-section {
-  background: #100e0b;
+  background: #0e1411;
   border-block: 1px solid #222;
 }
 .section-heading {
@@ -324,9 +327,15 @@ blockquote {
   font-family: var(--heading-font);
   font-size: 4rem;
   line-height: 1;
-  color: #9c895e;
+  color: var(--accent);
   display: block;
   margin-bottom: 32px;
+}
+.method-card:nth-child(2) .method-number {
+  color: var(--text);
+}
+.method-card:nth-child(3) .method-number {
+  color: var(--secondary-text);
 }
 .method-card h3 {
   margin: 12px 0 16px;
@@ -356,7 +365,7 @@ blockquote {
 }
 .site-footer {
   border-top: 1px solid var(--border);
-  background: #100e0b;
+  background: #0e1411;
 }
 .footer-top {
   padding-block: 48px;
