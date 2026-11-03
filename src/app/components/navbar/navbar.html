@@ -1,41 +1,37 @@
-<link
-  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-  rel="stylesheet"
->
-
-<nav class="navbar navbar-expand-lg navbar-dark mp-navbar sticky-top"
-     aria-label="Navegação principal">
-  <div class="container">
-    <a class="navbar-brand mp-brand d-flex align-items-center" href="#inicio">
-      <img src="img/logo.png" alt="">
-      <span>LUCAS PHYSIQUE</span>
+﻿<header class="site-header">
+  <nav class="container nav-shell" aria-label="Navegação principal">
+    <a href="#inicio" class="brand" aria-label="Lucas Physique — início" (click)="close()">
+      @if (media.logo) {
+        <img class="brand-logo" [src]="media.logo" width="480" height="542" alt="" />
+      } @else {
+        <span class="brand-symbol" aria-hidden="true">L<span>P</span></span>
+      }
+      <span>LUCAS <strong>PHYSIQUE</strong><small>CONSULTORIA ONLINE</small></span>
     </a>
-
-    <button class="navbar-toggler" type="button"
-            data-bs-toggle="collapse" data-bs-target="#mpNavbar"
-            aria-controls="mpNavbar" aria-expanded="false"
-            aria-label="Abrir menu">
-      <span class="navbar-toggler-icon"></span>
+    <button
+      #toggle
+      class="menu-toggle"
+      type="button"
+      [attr.aria-expanded]="open()"
+      aria-controls="main-menu"
+      [attr.aria-label]="open() ? 'Fechar menu' : 'Abrir menu'"
+      (click)="open.set(!open())"
+      (keydown.escape)="closeAndFocus(toggle)"
+    >
+      {{ open() ? 'Fechar ×' : 'Menu ☰' }}
     </button>
-
-    <div class="collapse navbar-collapse" id="mpNavbar">
-      <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#inicio">Início</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#metodo">Método 360</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#resultados">Resultados</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#planos">Planos</a>
-        </li>
-        <li class="nav-item ms-lg-2">
-          <a class="btn mp-cta rounded-1 px-3" href="#contato">Fale comigo</a>
-        </li>
-      </ul>
+    <div
+      id="main-menu"
+      class="nav-links"
+      [class.is-open]="open()"
+      (keydown.escape)="closeAndFocus(toggle)"
+    >
+      <a href="#inicio" (click)="close()">Início</a>
+      <a href="#sobre" (click)="close()">Sobre o Lucas</a>
+      <a href="#metodo" (click)="close()">Método 360</a>
+      <a href="#planos" class="button button-small" (click)="close()"
+        >Escolha seu plano <span aria-hidden="true">↗</span></a
+      >
     </div>
-  </div>
-</nav>
+  </nav>
+</header>

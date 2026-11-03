@@ -1,21 +1,18 @@
-import { Component } from '@angular/core';
-
-interface ItemNavbar {
-  titulo: string;
-  url: string;
-  icone: string;
-}
-
+﻿import { Component, signal } from '@angular/core';
+import { MEDIA } from '../../data/content';
 @Component({
-  imports: [],
   selector: 'app-navbar',
-  styleUrl: './navbar.scss',
   templateUrl: './navbar.html',
+  styleUrl: './navbar.scss',
 })
 export class Navbar {
-  public readonly itens: ItemNavbar[] = [
-    { titulo: 'Sobre', url: '#sobre', icone: 'bi bi-person' },
-    { titulo: 'Habilidades', url: '#habilidades', icone: 'bi bi-award' },
-    { titulo: 'Projetos', url: '#projetos', icone: 'bi bi-card-list' },
-  ];
+  readonly open = signal(false);
+  readonly media = MEDIA;
+  close(): void {
+    this.open.set(false);
+  }
+  closeAndFocus(button: HTMLButtonElement): void {
+    this.close();
+    button.focus();
+  }
 }

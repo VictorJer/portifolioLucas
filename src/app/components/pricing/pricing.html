@@ -1,0 +1,95 @@
+﻿<section id="planos" class="section" aria-labelledby="pricing-title">
+  <div class="container">
+    <div class="pricing-heading">
+      <p class="eyebrow">03 / INVISTA NA SUA EVOLUÇÃO</p>
+      <h2 id="pricing-title">Seu objetivo merece<br /><span>um plano de verdade.</span></h2>
+      <p class="body-copy">
+        Consultoria online com o Método Evolução 360.<br />Quanto maior o plano, maior a economia
+        mensal.
+      </p>
+    </div>
+    <div class="saving-banner">
+      <span class="saving-icon" aria-hidden="true">↘</span>
+      <p>
+        No Anual, <strong>{{ money(monthlySaving(plans[5])) }} a menos por mês.</strong
+        ><small
+          >Economia de {{ money(saving(plans[5])) }} em 12 meses em comparação à contratação mensal
+          pelo mesmo período.</small
+        >
+      </p>
+      <span class="saving-tag">MAIS CONSTÂNCIA.<br />MAIS ECONOMIA.</span>
+    </div>
+    <div class="pricing-grid">
+      @for (plan of plans; track plan.id) {
+        <article
+          class="plan-card"
+          [class.featured]="plan.featured"
+          [attr.aria-labelledby]="'plan-' + plan.id"
+        >
+          <div class="plan-label">
+            @if (plan.featured) {
+              <span class="featured-badge">✳ Melhor Custo-Benefício</span>
+            } @else {
+              <span>CONSULTORIA ONLINE</span>
+            }
+          </div>
+          <h3 [id]="'plan-' + plan.id">{{ plan.name }}</h3>
+          <p class="duration">
+            {{ plan.months }}
+            {{ plan.months === 1 ? 'mês de acompanhamento' : 'meses de acompanhamento' }}
+          </p>
+          <p class="plan-price">
+            @if (plan.months > 1) {
+              <span class="installments">{{ plan.months }}x de</span>
+            }
+            <strong>{{ money(plan.installmentCents) }}</strong>
+          </p>
+          <p class="plan-total">Total do plano: {{ money(total(plan)) }}</p>
+          <div class="plan-divider"></div>
+          <ul class="plan-features">
+            <li>Método Evolução 360</li>
+            <li>Feedback a cada 10 dias</li>
+            <li>Fotos, peso e checklist de hábitos</li>
+          </ul>
+          <p class="plan-saving">
+            @if (saving(plan) > 0) {
+              Economia de <strong>{{ money(saving(plan)) }}</strong
+              ><small>{{ money(monthlySaving(plan)) }} a menos por mês*</small>
+            } @else {
+              Um mês para dar o primeiro passo.<small>Referência para comparação dos planos.</small>
+            }
+          </p>
+          @if (whatsappUrl(plan); as url) {
+            <a
+              class="button plan-cta"
+              [class.button-outline]="!plan.featured"
+              [href]="url"
+              target="_blank"
+              rel="noopener noreferrer"
+              [attr.aria-label]="
+                'Escolher plano ' + plan.name + ' pelo WhatsApp (abre em nova aba)'
+              "
+              >Escolher {{ plan.name }} <span aria-hidden="true">↗</span></a
+            >
+          } @else {
+            <button
+              class="button plan-cta button-unavailable"
+              type="button"
+              disabled
+              [attr.aria-describedby]="'pending-' + plan.id"
+            >
+              Contato em breve <span aria-hidden="true">↗</span></button
+            ><small class="pending-contact" [id]="'pending-' + plan.id"
+              >WhatsApp oficial em configuração.</small
+            >
+          }
+        </article>
+      }
+    </div>
+    <p class="pricing-footnote">
+      * Economia calculada sobre o plano Mensal de {{ money(plans[0].installmentCents) }} durante o
+      mesmo período. Os valores em parcelas e os totais estão indicados em cada plano. Condições de
+      contratação devem ser confirmadas com o Lucas.
+    </p>
+  </div>
+</section>

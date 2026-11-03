@@ -1,0 +1,29 @@
+﻿<footer class="site-footer">
+  <div class="container footer-top">
+    <a class="brand" href="#inicio" aria-label="Lucas Physique — voltar ao início">
+      @if (media.logo) {
+        <img class="brand-logo" [src]="media.logo" alt="" width="480" height="542" loading="lazy" />
+      } @else {
+        <span class="brand-symbol" aria-hidden="true">L<span>P</span></span>
+      }
+      <span>LUCAS <strong>PHYSIQUE</strong><small>MÉTODO. DISCIPLINA. EVOLUÇÃO.</small></span></a
+    >
+    <p>O próximo passo<br /><strong>é seu.</strong></p>
+    <a class="text-link" href="#planos">Escolha seu plano <span aria-hidden="true">↗</span></a>
+  </div>
+  <div class="container footer-bottom">
+    <small>© {{ year }} Lucas Physique. Todos os direitos reservados.</small>
+    @if (contact.instagram) {
+      <a
+        [href]="contact.instagram"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Instagram do Lucas (abre em nova aba)"
+        >Instagram ↗</a
+      >
+    } @else {
+      <span>Instagram oficial em breve</span>
+    }
+    <a href="#inicio">Voltar ao topo ↑</a>
+  </div>
+</footer>

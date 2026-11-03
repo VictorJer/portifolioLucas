@@ -1,15 +1,13 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+﻿import { Component } from '@angular/core';
 import { Navbar } from './components/navbar/navbar';
-import { Sobre } from './components/sobre/sobre';
-import { Projetos } from './components/projetos/projetos';
-
+import { HeroComponent } from './components/hero/hero';
+import { BioComponent } from './components/bio/bio';
+import { MethodComponent } from './components/method/method';
+import { PricingComponent } from './components/pricing/pricing';
+import { Footer } from './components/footer/footer';
 @Component({
-  imports: [Navbar, Sobre, Projetos], // Hander Bory = RouterOutlet
   selector: 'app-root',
-  styleUrl: './app.scss',
+  imports: [Navbar, HeroComponent, BioComponent, MethodComponent, PricingComponent, Footer],
   templateUrl: './app.html',
 })
-export class App {
-  // Raiz/Startuo do Projeto
-}
+export class App {}

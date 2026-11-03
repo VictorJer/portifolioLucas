@@ -30,7 +30,7 @@
               }
             ],
             "styles": ["src/styles.scss"],
-            "scripts": ["bootstrap/dist/js/bootstrap.min.js"]
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -74,7 +74,7 @@
         "deploy": {
           "builder": "angular-cli-ghpages:deploy",
           "options": {
-            "baseHref": "https://VictorJer.github.io/portifolio/",
+            "baseHref": "/portifolio/",
             "name": "Victor Jeremias",
             "email": "victorvarelejeremias@gmail.com"
           }

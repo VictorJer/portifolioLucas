@@ -1,0 +1,43 @@
+﻿<section id="sobre" class="section" aria-labelledby="bio-title">
+  <div class="container bio-grid">
+    <div class="bio-statement">
+      @if (media.bio) {
+        <img
+          class="bio-photo"
+          [src]="media.bio"
+          alt="Lucas Francisco"
+          width="520"
+          height="600"
+          loading="lazy"
+        />
+      } @else {
+        <span class="section-index">01 / QUEM ESTÁ COM VOCÊ</span>
+        <p class="statement">
+          O SEU<br />OBJETIVO.<br /><span>A NOSSA<br />MISSÃO.</span>
+        </p>
+        <span class="statement-foot">LUCAS PHYSIQUE / EVOLUÇÃO 360</span>
+      }
+    </div>
+    <div>
+      <p class="eyebrow">EXPERIÊNCIA QUE DIRECIONA</p>
+      <h2 id="bio-title">Prazer, eu sou o<br /><span>Lucas Francisco!</span></h2>
+      <div class="credentials"><span>Coach · formação CBMF</span><span>Atleta NPC</span></div>
+      <p class="body-copy">
+        Do Bodybuilding ao Classic Physique, a disciplina de atleta encontra o planejamento para a
+        sua realidade.
+      </p>
+      <p class="body-copy">
+        Minha especialidade é ajudar
+        <strong>mulheres acima de 30 anos com resultados travados</strong>. Também atendo homens e
+        mulheres com objetivos de emagrecimento, hipertrofia e preparação de atletas.
+      </p>
+      <blockquote>
+        “Resultados consistentes não são construídos com fórmulas mágicas... São construídos com
+        planejamento, disciplina e constância.”
+      </blockquote>
+      <a class="text-link" href="#metodo"
+        >Conheça o Método Evolução 360 <span aria-hidden="true">↗</span></a
+      >
+    </div>
+  </div>
+</section>

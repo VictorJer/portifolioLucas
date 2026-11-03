@@ -1,59 +1,47 @@
-# Portifolio
+﻿# Lucas Physique — Método Evolução 360
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.2.0.
+Landing page Angular com TypeScript e SCSS, orientada pelo [SPEC.md](SPEC.md) e pelas responsabilidades do [AGENTS.md](AGENTS.md).
 
-## Development server
+A pedido do usuário, a paleta segue o PDF “MÉTODO 360 (1).pdf”: dourado `#D9AC39` amostrado da capa, fundo preto quente `#080706` e texto branco `#FFFFFF`, com superfícies em tons de bronze. Esta orientação substitui a paleta verde neon originalmente descrita no SPEC e no AGENTS; preços e condições permanecem os do SPEC. As cores estão centralizadas em `src/styles.scss`.
 
-To start a local development server, run:
+## Desenvolvimento
 
-```bash
-ng serve
+```sh
+npm ci
+npm start
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Acesse `http://localhost:4200`. A página tem navegação por âncoras, componentes standalone e layout mobile-first. Bootstrap Reboot é importado uma única vez; o menu é controlado pelo Angular, sem JavaScript de Bootstrap ou CDN.
 
-## Code scaffolding
+## Conteúdo e contatos oficiais
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Edite `src/app/data/content.ts`:
 
-```bash
-ng generate component component-name
+- `CONTACT.whatsapp`: número oficial com DDI e DDD, somente dígitos. Exemplo de formato: `55DDNUMERO`. Enquanto estiver vazio, os seis botões ficam desabilitados e identificam a pendência.
+- `CONTACT.instagram`: URL HTTPS do perfil oficial. Enquanto estiver vazia, o rodapé mostra o aviso correspondente.
+- `MEDIA.hero`, `MEDIA.bio` e `MEDIA.logo`: caminhos relativos a `public/`, sem barra inicial, por exemplo `img/lucas-hero.webp`. Use apenas fotos e marca oficiais validadas. As fotos têm espaço reservado e a principal carrega com prioridade.
+- `PLANS`: valores em centavos. Totais e economia são calculados, usando o Mensal como referência para o mesmo período.
+
+A logo oficial confirmada pelo usuário, `public/img/logo.png`, é usada no cabeçalho, no rodapé e como favicon, preservando suas cores e proporções. A foto oficial fornecida pelo usuário é usada no Hero em `public/img/lucas-francisco.webp`, com transparência e proporções preservadas. O WebP tem aproximadamente 42 kB, convertido do PNG original de 283 kB, sem redimensionamento. A biografia mantém uma composição tipográfica até que uma segunda foto seja configurada.
+
+Antes de publicar, inserir WhatsApp e Instagram oficiais e revisar biografia e método com os materiais completos. O PDF “MÉTODO 360 (1).pdf” foi fornecido como referência de cores e apresenta preços diferentes; não atualizar os preços sem orientação expressa do usuário. Conferir divergências com o SPEC antes de alterar credenciais ou condições. Adicionar `og:image` com URL pública absoluta quando o endereço público for confirmado.
+
+As fontes Inter e Teko são servidas localmente. Suas licenças SIL Open Font License estão em `public/fonts/`.
+
+## Verificação
+
+```sh
+npm test -- --watch=false
+npm run build
+npm run build:pages
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Os testes cobrem preços do SPEC, totais, economia anual, mensagens de WhatsApp, contatos pendentes, âncoras e menu. Conferir visualmente em 360, 390, 768, 1024 e 1440 pixels, inclusive navegação por teclado, movimento reduzido e compartilhamento.
 
-```bash
-ng generate --help
-```
+Validação da implementação em 03/11/2026: 22 testes automatizados aprovados; build de produção para GitHub Pages aprovado, dentro dos budgets. No Edge, as cinco larguras foram verificadas sem rolagem horizontal ou erros de execução/arquivos. Também foram verificados âncoras, menu móvel, foco, link para pular ao conteúdo, movimento reduzido e fontes locais. A análise automatizada axe-core (WCAG 2 A/AA e 2.1 AA) não apontou violações nessas telas; isso não substitui uma auditoria manual completa. Contatos oficiais e imagem de compartilhamento continuam pendentes de validação antes da publicação.
 
-## Building
+## GitHub Pages
 
-To build the project run:
+`npm run build:pages` gera `dist/portifolio/browser` com base `/portifolio/`. Caminhos de assets são relativos para funcionar nesse subdiretório. O destino configurado permanece o repositório existente; confirme que a URL final corresponde a esse caminho antes de publicar. Não há dependência de fallback de rotas, pois a navegação usa âncoras.
 
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Depois de validar materiais e contatos, a publicação pode ser feita explicitamente com `npx ng deploy`. Nenhuma publicação faz parte da implementação local.
