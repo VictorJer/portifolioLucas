@@ -32,6 +32,43 @@ describe('Landing page Lucas Physique', () => {
     expect(root.querySelector('a[href*="wa.me"]')).toBeNull();
     expect(root.textContent).toContain('Instagram oficial em breve');
   });
+  it('apresenta comparações completas entre o método e os planos', async () => {
+    const fixture = await render();
+    const root: HTMLElement = fixture.nativeElement;
+    const sections = [...root.querySelectorAll('main section')].map((section) => section.id);
+    expect(sections.indexOf('resultados')).toBe(sections.indexOf('metodo') + 1);
+    expect(sections.indexOf('planos')).toBe(sections.indexOf('resultados') + 1);
+    const images = root.querySelectorAll<HTMLImageElement>('#resultados figure img');
+    expect(images).toHaveLength(2);
+    expect(images[0].getAttribute('src')).toBe('img/dps.webp');
+    expect(images[0].alt).toContain('07/05/2026');
+    expect(images[0].alt).toContain('25/10/2026');
+    expect(images[1].getAttribute('src')).toBe('img/dps2.webp');
+    expect(images[1].alt).toContain('05/09/2026');
+    expect(images[1].alt).toContain('24/10/2026');
+    for (const image of images) {
+      expect(image.getAttribute('loading')).toBe('lazy');
+      expect(image.width).toBeGreaterThan(0);
+      expect(image.height).toBeGreaterThan(0);
+    }
+    expect(root.querySelector('#resultados a[href="#planos"]')?.textContent).toContain(
+      'Conheça os planos',
+    );
+    expect(root.querySelector('#resultados')?.getAttribute('aria-labelledby')).toBe(
+      'results-title',
+    );
+  });
+  it('fecha o menu ao selecionar Resultados', async () => {
+    const fixture = await render();
+    const root: HTMLElement = fixture.nativeElement;
+    const toggle = root.querySelector<HTMLButtonElement>('.menu-toggle')!;
+    toggle.click();
+    await fixture.whenStable();
+    expect(toggle.getAttribute('aria-expanded')).toBe('true');
+    root.querySelector<HTMLAnchorElement>('#main-menu a[href="#resultados"]')!.click();
+    await fixture.whenStable();
+    expect(toggle.getAttribute('aria-expanded')).toBe('false');
+  });
   it('ativa os contatos configurados', async () => {
     CONTACT.whatsapp = '5511999999999';
     CONTACT.instagram = 'https://www.instagram.com/exemplo/';

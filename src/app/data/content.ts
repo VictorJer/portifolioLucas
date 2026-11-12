@@ -15,6 +15,27 @@ export const MEDIA: { hero: string; bio: string; logo: string } = {
   logo: 'img/logo.png',
 };
 
+export const TRANSFORMATIONS = [
+  {
+    id: 'evolucao-01',
+    image: 'img/dps.webp',
+    alt: 'Comparação de perfil: antes em 07/05/2026 e depois em 25/10/2026.',
+    before: '07/05/2026',
+    after: '25/10/2026',
+    width: 1212,
+    height: 1280,
+  },
+  {
+    id: 'evolucao-02',
+    image: 'img/dps2.webp',
+    alt: 'Comparação de perfil: antes em 05/09/2026 e depois em 24/10/2026.',
+    before: '05/09/2026',
+    after: '24/10/2026',
+    width: 1280,
+    height: 923,
+  },
+] as const;
+
 export const PLANS: readonly Plan[] = [
   { id: 'mensal', name: 'Mensal', months: 1, installmentCents: 59990 },
   { id: 'trimestral', name: 'Trimestral', months: 3, installmentCents: 54990 },

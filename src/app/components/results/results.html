@@ -1,0 +1,38 @@
+<section id="resultados" class="section" aria-labelledby="results-title">
+  <div class="container">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">03 / EVOLUÇÃO EM FOCO</p>
+        <h2 id="results-title">Antes e depois.<br /><span>O processo em imagens.</span></h2>
+      </div>
+      <p class="section-intro">
+        Cada trajetória é única. Conheça os registros de evolução e dê o próximo passo na sua.
+      </p>
+    </div>
+    <div class="results-grid">
+      @for (result of transformations; track result.id) {
+        <figure class="result-card">
+          <img
+            [src]="result.image"
+            [alt]="result.alt"
+            [width]="result.width"
+            [height]="result.height"
+            loading="lazy"
+            decoding="async"
+          />
+          <figcaption>
+            <span><small>ANTES</small>{{ result.before }}</span>
+            <span class="result-arrow" aria-hidden="true">↗</span>
+            <span><small>DEPOIS</small>{{ result.after }}</span>
+          </figcaption>
+        </figure>
+      }
+    </div>
+    <div class="results-bottom">
+      <p class="body-copy">
+        Planejamento, disciplina e constância. Sua evolução começa com um plano.
+      </p>
+      <a class="button" href="#planos">Conheça os planos <span aria-hidden="true">↗</span></a>
+    </div>
+  </div>
+</section>
