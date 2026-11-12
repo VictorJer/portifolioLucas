@@ -42,6 +42,22 @@ Validação da implementação em 03/11/2026: 22 testes automatizados aprovados;
 
 ## GitHub Pages
 
-`npm run build:pages` gera `dist/portifolio/browser` com base `/portifolio/`. Caminhos de assets são relativos para funcionar nesse subdiretório. O destino configurado permanece o repositório existente; confirme que a URL final corresponde a esse caminho antes de publicar. Não há dependência de fallback de rotas, pois a navegação usa âncoras.
+O workflow `.github/workflows/deploy-pages.yml` testa, compila e publica a cada push na `main`. Também pode ser executado em **Actions → Deploy to GitHub Pages → Run workflow**. O deploy só ocorre se os testes e o build passarem.
 
-Depois de validar materiais e contatos, a publicação pode ser feita explicitamente com `npx ng deploy`. Nenhuma publicação faz parte da implementação local.
+Em **Settings → Pages → Build and deployment → Source**, selecione **GitHub Actions**. O plano precisa permitir Pages: repositórios públicos no GitHub Free ou privados com plano compatível.
+
+O endereço padrão deste repositório é `https://victorjer.github.io/portifolioLucas/`. `npm run build:pages` gera `dist/portifolio/browser` com base `/portifolioLucas/`. No workflow, a base vem automaticamente dos metadados do Pages, inclusive após configurar domínio próprio ou renomear o repositório. Caminhos de assets são relativos e a navegação usa âncoras, sem precisar de fallback de rotas.
+
+### Endereço personalizado
+
+Para usar um domínio que você possui:
+
+1. Em **Settings → Pages → Custom domain**, informe o domínio e salve.
+2. No provedor DNS, para `www` ou outro subdomínio, crie um registro `CNAME` apontando para `victorjer.github.io` (sem o nome do repositório).
+3. Para o domínio raiz, crie quatro registros `A` em `@`: `185.199.108.153`, `185.199.109.153`, `185.199.110.153` e `185.199.111.153`.
+4. Aguarde a validação DNS e habilite **Enforce HTTPS** quando disponível. A propagação pode levar até 24 horas.
+5. Execute novamente o workflow para recompilar com a base do domínio personalizado.
+
+Com GitHub Actions, o domínio é configurado no Pages e não exige arquivo `CNAME` no projeto. Consulte a [documentação oficial de domínios](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site).
+
+Para personalizar apenas o caminho gratuito `github.io`, o nome do repositório determina esse caminho. Depois de renomeá-lo, atualize o remote local e as bases dos comandos locais em `package.json` e `angular.json`; o workflow usa a base informada pelo Pages automaticamente.
