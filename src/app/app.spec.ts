@@ -1,12 +1,15 @@
 import { TestBed } from '@angular/core/testing';
-import { afterEach, describe, expect, it } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { App } from './app';
-import { CONTACT } from './data/content';
+import { CONTACT, PLANS, money, total } from './data/content';
 
 describe('Landing page Lucas Physique', () => {
+  const originalContact = { ...CONTACT };
+  beforeEach(() => {
+    Object.assign(CONTACT, originalContact);
+  });
   afterEach(() => {
-    CONTACT.whatsapp = '';
-    CONTACT.instagram = '';
+    Object.assign(CONTACT, originalContact);
   });
   async function render() {
     await TestBed.configureTestingModule({ imports: [App] }).compileComponents();
@@ -26,6 +29,8 @@ describe('Landing page Lucas Physique', () => {
     expect(root.textContent).not.toContain('Full Stack');
   });
   it('mantém contratação indisponível enquanto faltarem contatos oficiais', async () => {
+    CONTACT.whatsapp = '';
+    CONTACT.instagram = '';
     const fixture = await render();
     const root: HTMLElement = fixture.nativeElement;
     expect(root.querySelectorAll('button.plan-cta:disabled')).toHaveLength(6);
@@ -70,13 +75,39 @@ describe('Landing page Lucas Physique', () => {
     expect(toggle.getAttribute('aria-expanded')).toBe('false');
   });
   it('ativa os contatos configurados', async () => {
-    CONTACT.whatsapp = '5511999999999';
-    CONTACT.instagram = 'https://www.instagram.com/exemplo/';
+    expect(CONTACT).toEqual({
+      whatsapp: '554988107298',
+      instagram: 'https://www.instagram.com/lucasfrancisco_physique/',
+    });
     const fixture = await render();
     const root: HTMLElement = fixture.nativeElement;
-    expect(root.querySelectorAll('a[href*="wa.me"]')).toHaveLength(6);
-    expect(root.querySelector('a[href="https://www.instagram.com/exemplo/"]')).not.toBeNull();
+    const whatsappLinks = root.querySelectorAll<HTMLAnchorElement>('a.plan-cta');
+    expect(whatsappLinks).toHaveLength(6);
+    for (const [index, link] of [...whatsappLinks].entries()) {
+      const plan = PLANS[index];
+      const url = new URL(link.href);
+      expect(url.origin).toBe('https://wa.me');
+      expect(url.pathname).toBe('/554988107298');
+      const message = url.searchParams.get('text')!;
+      expect(message).toContain(`plano ${plan.name} de ${plan.months} `);
+      expect(message).toContain(`${plan.months}x de ${money(plan.installmentCents)}`);
+      expect(message).toContain(`total ${money(total(plan))}`);
+      expect(message).toContain('Método Evolução 360');
+      expect(link.getAttribute('aria-label')).toContain('WhatsApp (abre em nova aba)');
+    }
+    const instagramLink = root.querySelector<HTMLAnchorElement>(
+      'footer a[href="https://www.instagram.com/lucasfrancisco_physique/"]',
+    );
+    expect(instagramLink).not.toBeNull();
+    expect(instagramLink!.getAttribute('aria-label')).toContain('Instagram do Lucas (abre em nova aba)');
+    for (const link of [...whatsappLinks, instagramLink!]) {
+      expect(link.target).toBe('_blank');
+      expect(link.relList.contains('noopener')).toBe(true);
+      expect(link.relList.contains('noreferrer')).toBe(true);
+    }
     expect(root.querySelector('button.plan-cta')).toBeNull();
+    expect(root.textContent).not.toContain('WhatsApp oficial em configuração.');
+    expect(root.textContent).not.toContain('Instagram oficial em breve');
   });
   it('abre o menu e fecha depois da escolha de uma seção', async () => {
     const fixture = await render();

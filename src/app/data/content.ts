@@ -7,7 +7,10 @@
 }
 
 /** Contatos oficiais. WhatsApp com DDI e DDD, apenas dígitos. */
-export const CONTACT: { whatsapp: string; instagram: string } = { whatsapp: '', instagram: '' };
+export const CONTACT: { whatsapp: string; instagram: string } = {
+  whatsapp: '554988107298',
+  instagram: 'https://www.instagram.com/lucasfrancisco_physique/',
+};
 /** Caminhos relativos a public/. Preencher somente com materiais oficiais validados. */
 export const MEDIA: { hero: string; bio: string; logo: string } = {
   hero: 'img/lucas-francisco.webp',
